@@ -1,18 +1,15 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
+const wwebVersion = '2.2407.3';
 const client = new Client({
-    authStrategy: new LocalAuth({ dataPath: "sessions" }),
+    puppeteer: {
+        args: ['--no-sandbox'],
+    },
     webVersionCache: {
         type: 'remote',
-        remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html'
+        remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/${wwebVersion}.html`,
     },
-    puppeteer: {
-        args: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox'
-        ]
-    }
 });
 
 
